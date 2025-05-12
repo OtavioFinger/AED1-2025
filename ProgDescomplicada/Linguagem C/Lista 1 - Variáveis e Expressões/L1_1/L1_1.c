@@ -1,11 +1,12 @@
-//1. Fac¸a um programa que leia um n ´umero inteiro e o imprima.
-
+//Fac¸a um programa que leia um n ´umero inteiro e o imprima.
 #include <stdio.h>
+    int main(){
 
-int main(){
-    int n = 3;
+        int n;
 
-    printf("%d\n", n);
+        printf( "Digite o número: " );
+            scanf( "%d", &n );
+        printf( "O número é: %d\n", n) ;
 
-    return 0;
-}
+        return 0;
+    }

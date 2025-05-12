@@ -1,13 +1,14 @@
-//2. Fac¸a um programa que leia um n ´umero real e o imprima
+//Fac¸a um programa que leia um n ´umero real e o imprima.
 
 #include <stdio.h>
 
-int main(){
+int main (){
 
-    double n;
+    float numeroReal;
 
-    scanf("%lf", &n);
-    printf("Número: %lf\n", n);
+    printf( "Qual seu número real?\n" );
+        scanf( "%f" , &numeroReal);
 
+        printf( "Seu número é %.3f\n", numeroReal );
     return 0;
 }
