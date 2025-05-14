@@ -29,12 +29,12 @@ int main (){
 
     *pI = *pI + 1;
     *pF = *pF + 1.5;
-    *pC = *pC + 1; 
+    *pC = *pC + 1; //mostra o próximo da tabela ascII
 
     printf( "\nDepois da modificação:\n");
-    printf( "int: %d\n", i );
-    printf( "float: %.2f\n", f );
-    printf( "char: %c\n", c );
+    printf( "int: %d\n", *pI );
+    printf( "float: %.2f\n", *pF );
+    printf( "char: %c\n", *pC );
 
     return 0;
 }
