@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Compilar e Executar L7_4",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/L7_4",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Habilita impressão de variáveis no GDB",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Compilar L7_4.c",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
