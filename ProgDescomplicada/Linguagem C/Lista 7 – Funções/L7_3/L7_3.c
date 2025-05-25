@@ -12,7 +12,7 @@ int main() {
     printf( "Qual número deseja ver seu sinal? ");
     scanf( "%d", &numero);
 
-    printf( "%d", RetornarSinal(numero) );
+    printf( "%d\n", RetornarSinal(numero) );
 
     return 0;
 }
