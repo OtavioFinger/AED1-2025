@@ -11,7 +11,7 @@ char* shortestCompletingWord(char* licensePlate, char** words, int wordsSize) {
     contadorLetras = (int *)malloc(wordsSize * (sizeof(char *)));
 
     //Contar o tamanho de licensePlate
-    while ( licensePlate[contador] != '\0'){
+    while ( licensePlate[contador] != '\0' ){
         contador++;
     }
     tamanhoLicensePlate = contador;
