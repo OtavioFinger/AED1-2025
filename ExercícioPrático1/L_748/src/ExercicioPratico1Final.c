@@ -41,7 +41,7 @@ char* shortestCompletingWord(char* licensePlate, char** words, int wordsSize) {
         
     }
 
-    char* palavraFinal = NULL;
+    char *palavraFinal = NULL;
     int numeroDeWords = wordsSize;
     int tamanhoLastWord = 15; // Tirado de Constraints
 
