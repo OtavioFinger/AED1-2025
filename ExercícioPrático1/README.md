@@ -36,3 +36,7 @@ Números e espaços são ignorados, só importam as letras para ser analisadas. 
 **Input:**  
 `licensePlate = "1s3 456"`, `words = ["looks", "pest", "stew", "show"]`  
 **Output:** `"pest"`
+
+**Input:**  
+`licensePlate = "t0t0t0TTa"`, `words = ["t", "ta", "ta", "ttttat"]`  
+**Output:** `"ttttat"`
