@@ -6,6 +6,15 @@
 #include <math.h>
 
 int main() {
+    int numero;
 
+    printf("Informe um número:");
+    scanf("%d", &numero);
+
+    if ( numero > 0) {
+        printf("Raiz quadrada: %f", sqrt(numero));
+    } else if (numero < 0) {
+        printf("Número Inválido!");
+    }
     return 0;
 }
