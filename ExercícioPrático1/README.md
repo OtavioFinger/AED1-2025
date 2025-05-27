@@ -39,4 +39,8 @@ Números e espaços são ignorados, só importam as letras para ser analisadas. 
 
 **Input:**  
 `licensePlate = "t0t0t0TTa"`, `words = ["t", "ta", "ta", "ttttat"]`  
+<<<<<<< HEAD
 **Output:** `"ttttat"`
+=======
+**Output:** `"ttttat"`
+>>>>>>> ecd5b4c4e5868ac6c8fdf9294b050c639091ceff
