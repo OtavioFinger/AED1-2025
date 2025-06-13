@@ -1,4 +1,3 @@
-
 # Trabalho Agenda pBuffer, por Otávio Finger da M1
 
 ## Explicação do Problema
@@ -24,25 +23,27 @@ O interessante é que só podemos manipular esse espaço através de um `void *p
 
 ### CONSTANTES
 
-
+```c
 #define TAM_NOME sizeof(char) * 255
 #define TAM_IDADE sizeof(char) * 4
 #define TAM_EMAIL sizeof(char) * 255
 #define TAM_PESSOA (TAM_NOME + TAM_IDADE + TAM_EMAIL)
 #define MENU sizeof(int)
 #define FIM (MENU + TAM_PESSOA)
+```
 
 ### ÚNICO MALLOC
 
-
+```c
 void *pBuffer = malloc(MENU + TAM_PESSOA);
+```
 
-
-- [pBuffer] = [MENU][NOME][IDADE][EMAIL]` → espaço fixo  
-- fimBuffer` aponta para o fim desse espaço fixo (usado para saber onde começar a armazenar os contatos)
+- `[pBuffer] = [MENU][NOME][IDADE][EMAIL]` → espaço fixo  
+- `fimBuffer` aponta para o fim desse espaço fixo (usado para saber onde começar a armazenar os contatos)
 
 ### ONDE OS PONTEIROS DEVEM APONTAR
 
+```c
 opcaoMenu = (int *)pBuffer;
 nome = (char *)(pBuffer + MENU);
 idade = (char *)(pBuffer + MENU + TAM_NOME);
@@ -86,7 +87,7 @@ email = (char *)(pBuffer + MENU + TAM_NOME + TAM_IDADE);
 
 ### Teste 1: Tentando remover um contato de uma agenda vazia
 
-
+```
 AGENDA DO TOTO:
 1 - Adicionar Contato
 2 - Remover Contato
@@ -99,13 +100,13 @@ Digite o nome a ser removido: (Maiúsculas importam!)
 Otávio
 
 Agenda vazia!
-
+```
 
 ---
 
 ### Teste 2: Tentar passar uma string maior que 255 bytes
 
-
+```
 AGENDA DO TOTO:
 1 - Adicionar Contato
 2 - Remover Contato
@@ -117,26 +118,26 @@ Escolha uma opção: 1
 Escreva o nome: Totooooooooooooooooooooooo... [string muito longa]
 Escreva a idade:
 Escreva o email:
-
+```
 
 Saída (resumida):
 
-
+```
 --------------------------
 Nome: [muito longo]
 Idade: ooo
 Email: [muito longo]
 --------------------------
-(aqui ele começou a fazer apresentar erros estranhos, como após selecionar 'buscarContato', começou a perguntar email novamente,
-presumo que isso aconteça pois o 255 começa a sobreescrever os dados. A medida que isso aconteçe, o programa vai bugando cada vez mais).
+```
 
+(Aqui ele começou a apresentar erros estranhos, como após selecionar 'buscarContato', começou a perguntar email novamente. Presumo que isso aconteça pois o 255 começa a sobreescrever os dados. A medida que isso acontece, o programa vai bugando cada vez mais).
 
 ---
 
 ### Teste 3: Inserir 2 contatos iguais e ver qual é buscado
 
+```
 AGENDA DO TOTO:
-1 - Adicionar Contato
 Escolha uma opção: 1
 
 Escreva o nome: Otávio
@@ -159,11 +160,13 @@ Otávio
 Nome: Otávio
 Idade: 19
 Email: otaviofinger@gmail.com
+```
 
 ---
 
 ### Teste 4: Inserir contatos vazios e ver qual é buscado
 
+```
 AGENDA DO TOTO:
 Escolha uma opção: 1
 
@@ -179,3 +182,4 @@ Digite o nome a ser encontrado: (Maiúsculas importam!)
 Nome:  
 Idade:  
 Email:  
+```
