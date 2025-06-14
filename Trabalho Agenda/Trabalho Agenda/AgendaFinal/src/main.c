@@ -9,11 +9,11 @@
 #define TAM_PESSOA (TAM_NOME + TAM_IDADE + TAM_EMAIL)
 #define MENU sizeof(int)
 
-void adicionarContato(void **pBuffer, int **opcaoMenu, char **nome, char **idade, char **email, void **fimpBuffer, void *ponteiroAtual);
-bool buscarContato(void *pBuffer, char *nome, void **ponteiroAtual, void *fimpBuffer);
-void removerContato(void **pBuffer, char **nome, char **idade, char **email, int **opcaoMenu, void **ponteiroAtual, void **fimpBuffer);
-void listarContatos(void *pBuffer, void **ponteiroAtual, void *fimpBuffer);
-void avancarCampo(void **ponteiroAtual);
+void AdicionarContato(void **pBuffer, int **opcaoMenu, char **nome, char **idade, char **email, void **fimpBuffer, void *ponteiroAtual);
+bool BuscarContato(void *pBuffer, char *nome, void **ponteiroAtual, void *fimpBuffer);
+void RemoverContato(void **pBuffer, char **nome, char **idade, char **email, int **opcaoMenu, void **ponteiroAtual, void **fimpBuffer);
+void ListarContatos(void *pBuffer, void **ponteiroAtual, void *fimpBuffer);
+void AvancarCampo(void **ponteiroAtual);
 
 int main() {
     void *pBuffer = malloc(MENU + TAM_PESSOA);
@@ -21,7 +21,7 @@ int main() {
     int *opcaoMenu = NULL;
     char *nome = NULL, *idade = NULL, *email = NULL;
 
-    if (pBuffer == NULL) {
+    if ( pBuffer == NULL ) {
         printf("Erro ao alocar pBuffer\n");
         return 1;
     }
@@ -60,7 +60,7 @@ int main() {
                 fgets(email, TAM_EMAIL, stdin);
                 email[strcspn(email, "\n")] = '\0';
 
-                adicionarContato(&pBuffer, &opcaoMenu, &nome, &idade, &email, &fimpBuffer, ponteiroAtual);
+                AdicionarContato(&pBuffer, &opcaoMenu, &nome, &idade, &email, &fimpBuffer, ponteiroAtual);
                 break;
 
             case 2:
@@ -68,7 +68,7 @@ int main() {
                 fgets(nome, TAM_NOME, stdin);
                 nome[strcspn(nome, "\n")] = '\0';
 
-                removerContato(&pBuffer, &nome, &idade, &email, &opcaoMenu, &ponteiroAtual, &fimpBuffer);
+                RemoverContato(&pBuffer, &nome, &idade, &email, &opcaoMenu, &ponteiroAtual, &fimpBuffer);
                 break;
 
             case 3:
@@ -76,17 +76,17 @@ int main() {
                 fgets(nome, TAM_NOME, stdin);
                 nome[strcspn(nome, "\n")] = '\0';
 
-                if ( buscarContato(pBuffer, nome, &ponteiroAtual, fimpBuffer) ) {
+                if ( BuscarContato(pBuffer, nome, &ponteiroAtual, fimpBuffer) ) {
                     printf("\n\tNome: %s", (char *)ponteiroAtual);
-                    avancarCampo(&ponteiroAtual);
+                    AvancarCampo(&ponteiroAtual);
                     printf("\n\tIdade: %s", (char *)ponteiroAtual);
-                    avancarCampo(&ponteiroAtual);
+                    AvancarCampo(&ponteiroAtual);
                     printf("\n\tEmail: %s", (char *)ponteiroAtual);
                 }
                 break;
 
             case 4:
-                listarContatos(pBuffer, &ponteiroAtual, fimpBuffer);
+                ListarContatos(pBuffer, &ponteiroAtual, fimpBuffer);
                 break;
 
             case 5:
@@ -103,12 +103,13 @@ int main() {
     return 0;
 }
 
-void adicionarContato(void **pBuffer, int **opcaoMenu, char **nome, char **idade, char **email, void **fimpBuffer, void *ponteiroAtual) {
+void AdicionarContato(void **pBuffer, int **opcaoMenu, char **nome, char **idade, char **email, void **fimpBuffer, void *ponteiroAtual) {
     
     long long int deslocamento = (char *)(*fimpBuffer) - (char *)(*pBuffer);
     ponteiroAtual = *pBuffer;
 
-    *pBuffer = realloc(*pBuffer, deslocamento + strlen(*nome) + 1 + strlen(*idade) + 1 + strlen(*email) + 1);
+    *pBuffer = realloc(*pBuffer, deslocamento + strlen(*nome) 
+        + 1 + strlen(*idade) + 1 + strlen(*email) + 1);
     
     if ( *pBuffer == NULL ) {
         printf("Não foi possível realocar memória\n");
@@ -131,11 +132,11 @@ void adicionarContato(void **pBuffer, int **opcaoMenu, char **nome, char **idade
     *fimpBuffer = (char *)*fimpBuffer + strlen(*email) + 1;
 }
 
-void avancarCampo(void **ponteiroAtual) {
+void AvancarCampo(void **ponteiroAtual) {
     *ponteiroAtual = (char *)(*ponteiroAtual) + strlen((char *)(*ponteiroAtual)) + 1;
 }
 
-bool buscarContato(void *pBuffer, char *nome, void **ponteiroAtual, void *fimpBuffer) {
+bool BuscarContato(void *pBuffer, char *nome, void **ponteiroAtual, void *fimpBuffer) {
     *ponteiroAtual = (char *)pBuffer + (MENU + TAM_PESSOA);
 
     if ( *ponteiroAtual == fimpBuffer ) {
@@ -147,9 +148,9 @@ bool buscarContato(void *pBuffer, char *nome, void **ponteiroAtual, void *fimpBu
         if ( strcmp(nome, (char *)(*ponteiroAtual)) == 0 ) {
             return true;
         } else {
-            avancarCampo(ponteiroAtual); //avança nome
-            avancarCampo(ponteiroAtual); //avança idade
-            avancarCampo(ponteiroAtual); //avança email1
+            AvancarCampo(ponteiroAtual); //avança nome
+            AvancarCampo(ponteiroAtual); //avança idade
+            AvancarCampo(ponteiroAtual); //avança email1
         }
     }
 
@@ -157,7 +158,7 @@ bool buscarContato(void *pBuffer, char *nome, void **ponteiroAtual, void *fimpBu
     return false;
 }
 
-void listarContatos(void *pBuffer, void **ponteiroAtual, void *fimpBuffer) {
+void ListarContatos(void *pBuffer, void **ponteiroAtual, void *fimpBuffer) {
     *ponteiroAtual = (char *)pBuffer + (MENU + TAM_PESSOA);
 
     if ( *ponteiroAtual == fimpBuffer ) {
@@ -168,24 +169,24 @@ void listarContatos(void *pBuffer, void **ponteiroAtual, void *fimpBuffer) {
     printf("\n--------------------------");
     while ( *ponteiroAtual < fimpBuffer ) {
         printf("\n\tNome: %s", (char *)*ponteiroAtual);
-        avancarCampo(ponteiroAtual);
+        AvancarCampo(ponteiroAtual);
         printf("\n\tIdade: %s", (char *)*ponteiroAtual);
-        avancarCampo(ponteiroAtual);
+        AvancarCampo(ponteiroAtual);
         printf("\n\tEmail: %s", (char *)*ponteiroAtual);
-        avancarCampo(ponteiroAtual);
+        AvancarCampo(ponteiroAtual);
         printf("\n--------------------------");
     }
 }
 
-void removerContato(void **pBuffer, char **nome, char **idade, char **email, int **opcaoMenu, void **ponteiroAtual, void **fimpBuffer) {
+void RemoverContato(void **pBuffer, char **nome, char **idade, char **email, int **opcaoMenu, void **ponteiroAtual, void **fimpBuffer) {
     void *localRemocao = NULL;
     void *backupBuffer = *pBuffer;
 
-    if ( buscarContato(*pBuffer, *nome, &localRemocao, *fimpBuffer) )  {
+    if ( BuscarContato(*pBuffer, *nome, &localRemocao, *fimpBuffer) )  {
         *ponteiroAtual = localRemocao;
-        avancarCampo(ponteiroAtual); //avança nome
-        avancarCampo(ponteiroAtual); //avança email
-        avancarCampo(ponteiroAtual); //avança idade
+        AvancarCampo(ponteiroAtual); //avança nome
+        AvancarCampo(ponteiroAtual); //avança email
+        AvancarCampo(ponteiroAtual); //avança idade
 
         long long int tamRemovido = (char *)(*ponteiroAtual) - (char *)localRemocao;
         long long int total = (char *)(*fimpBuffer) - (char *)(*pBuffer);
