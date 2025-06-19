@@ -7,7 +7,7 @@ int main () {
     char string[100];
 
     printf("Digite a string: ");
-        fgets(string, 100, stdin);
+        fgets(string, sizeof(string), stdin);
         string[100 - 1] = '\0';   //tira o \n e troca por \0
 
     printf("String imprimida: %s", string);
