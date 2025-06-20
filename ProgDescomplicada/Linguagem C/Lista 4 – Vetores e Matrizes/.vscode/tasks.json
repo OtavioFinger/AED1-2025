@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"label": "Compilar C (L4_3.c)",
+		"type": "shell",
+		"command": "gcc",
+		"args": [
+		  "L4_3.c",
+		  "-o",
+		  "L4_3",
+		  "-lm"
+		],
+		"problemMatcher": ["$gcc"],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		}
+	  }
+	]
+  }
+  
