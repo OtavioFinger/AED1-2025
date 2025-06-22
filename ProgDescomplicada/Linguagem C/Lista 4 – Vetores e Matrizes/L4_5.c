@@ -8,7 +8,7 @@ int main() {
     int pares = 0;
 
     for( int i = 0; i < 10; i++ ) {
-        printf("vetor[%d]", i);
+        printf("vetor[%d]: ", i);
         scanf("%d", &vetor[i]);
         if ( vetor[i] % 2 == 0 ) {
             pares++;
