@@ -16,7 +16,7 @@ int main() {
 
         printf( "Digite o tamanho da string: ");
         scanf( "%d", &tamanho );
-        getchar(); //pq essa linha existe?
+        getchar(); 
 
         string = AlocaTamanhoString( tamanho );
 
