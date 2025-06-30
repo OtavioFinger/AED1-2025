@@ -6,38 +6,39 @@ int MaximumGain(char* s, int x, int y);
 
 int main(int argc, char const *argv[])
 {
-    char* s = "cdbcbbaaabab";
+    char* s = "xapu";
     int result;
 
-    int x = 4;
+    int x = 10;
     int y = 5;
 
-    result = MaximumGain( s, x, y);
+    result = MaximumGain( s, x, y );
 
     printf("Result: %d\n", result);
 
     return 0;
 }
+
 int MaximumGain(char* s, int x, int y) {
     int points = 0;
     int lenString = strlen(s);
 
     //Definir a pilha para colocar a string
-    struct Stack {
+    struct Stack_t {
         char characterOfString[255];
-        int top;
-        int base;
+        int top;   
+        int base;  
     };
 
-    struct Stack myStack, tempStack;
+    struct Stack_t myStack, tempStack;
 
     //Caso precise fazer funções auxiliares
-    struct Stack *pMyStack = &myStack;
-    struct Stack *pTempStack = &tempStack;
+    struct Stack_t *pMyStack = &myStack;
+    struct Stack_t *pTempStack = &tempStack;
 
     //Inicia a pilha como vazia
-    pMyStack->top = 0;
-    pTempStack-> top = 0;
+    pMyStack->top = -1;  // -1 indica pilha vazia
+    pTempStack->top = -1;
 
     //Decide qual a ordem das operações
 
@@ -46,39 +47,45 @@ int MaximumGain(char* s, int x, int y) {
     int highValue = 0, lowValue = 0;
 
     //Definir o padrão que dá mais pontos;
-    if ( x > y ) {  
+    if ( x > y ) {  //padrão "ab"
         firstHigh = 'a'; secondHigh = 'b'; highValue = x;
-        firstLow = 'b'; secondLow = 'a'; lowValue = y;
-    } else if ( y > x) {
-        firstHigh = 'b'; secondHigh = 'a'; highValue = y;
-        firstLow  = 'a'; secondLow  = 'b'; lowValue  = x;
+        firstLow  = 'b'; secondLow  = 'u'; lowValue  = y;
+    } else {        //padrão "ba"
+        firstHigh = 'a'; secondHigh = 'x'; highValue = y;
+        firstLow  = 'u'; secondLow  = 'p'; lowValue  = x;
     }
 
-    //Empilha na pilha principal, vendo a pontuação MAIOR
+    //Empilha na pilha principal, vendo o valor MAIOR
     for ( int i = 0; i < lenString; i++ ) {
-        pMyStack->characterOfString[pMyStack->top++] = s[i];
 
-        if ( pMyStack->top >= 2 &&
-            pMyStack->characterOfString[pMyStack->top - 2] == firstHigh &&
-            pMyStack->characterOfString[pMyStack->top - 1] == secondHigh ) {
-           
-        pMyStack->top = pMyStack->top - 2;
+            //Empilha um char por vez
+        pMyStack->characterOfString[++(pMyStack->top)] = s[i];
 
-        points += highValue;
+        
+        if ( pMyStack->top >= 1 &&
+            pMyStack->characterOfString[pMyStack->top - 1] == firstHigh &&
+            pMyStack->characterOfString[pMyStack->top] == secondHigh ) {
+            
+            pMyStack->top -= 2;
+
+            points += highValue;
         }
     }   
 
-    //Empilha na outra pilha, vendo agora a pontuação MENOR
-    for ( int i = 0; i < pMyStack->top; i++ ) {
-        pTempStack->characterOfString[pTempStack->top++] = pMyStack->characterOfString[i];
-        
-        if ( pTempStack->top >= 2 &&
-            pTempStack->characterOfString[pTempStack->top - 2] == firstLow &&
-            pTempStack->characterOfString[pTempStack->top - 1] == secondLow ) {
-            
-        pTempStack->top = pTempStack->top - 2;
+    //Empilha na outra pilha, elemento por elemento, vendo o valor MENOR
+    for ( int i = 0; i <= pMyStack->top; i++ ) {
 
-        points += lowValue;
+        //Empilha um char do final de pMyStack por vez
+        pTempStack->characterOfString[++(pTempStack->top)] = pMyStack->characterOfString[i];
+        
+        
+        if ( pTempStack->top >= 1 &&
+            pTempStack->characterOfString[pTempStack->top - 1] == firstLow &&
+            pTempStack->characterOfString[pTempStack->top] == secondLow ) {
+            
+            pTempStack->top -= 2;
+
+            points += lowValue;
         }
     }
     return points;
