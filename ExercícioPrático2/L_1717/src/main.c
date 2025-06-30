@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
     int result;
 
     int x = 4;
-    int y = 5;
+    int y = 0;
 
     result = MaximumGain( s, x, y );
 
