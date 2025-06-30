@@ -6,10 +6,10 @@ int MaximumGain(char* s, int x, int y);
 
 int main(int argc, char const *argv[])
 {
-    char* s = "xapu";
+    char* s = "cdbcbbaaabab";
     int result;
 
-    int x = 10;
+    int x = 4;
     int y = 5;
 
     result = MaximumGain( s, x, y );
@@ -49,10 +49,10 @@ int MaximumGain(char* s, int x, int y) {
     //Definir o padrão que dá mais pontos;
     if ( x > y ) {  //padrão "ab"
         firstHigh = 'a'; secondHigh = 'b'; highValue = x;
-        firstLow  = 'b'; secondLow  = 'u'; lowValue  = y;
+        firstLow  = 'b'; secondLow  = 'a'; lowValue  = y;
     } else {        //padrão "ba"
-        firstHigh = 'a'; secondHigh = 'x'; highValue = y;
-        firstLow  = 'u'; secondLow  = 'p'; lowValue  = x;
+        firstHigh = 'b'; secondHigh = 'a'; highValue = y;
+        firstLow  = 'a'; secondLow  = 'b'; lowValue  = x;
     }
 
     //Empilha na pilha principal, vendo o valor MAIOR
