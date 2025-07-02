@@ -19,7 +19,6 @@ int main () {
 
     printf(" Reverse: %s\n", string);
 
-
     return 0;
 }
 
