@@ -13,7 +13,9 @@ struct TreeNode *newNode (int val) {
     node->val = val;
     node->left = NULL;
     node->right = NULL;
-}
+};
+
+int maxDepth(struct TreeNode *root);
 
 int main() {
 
@@ -54,6 +56,7 @@ int calcHeightRight(struct TreeNode* root) {
         int leftRight = calcHeightRight(root->left);
         int right = calcHeightRight(root->right);
         int maior;
+        
         if ( leftRight > right ) {
             maior = leftRight;
         } else {
