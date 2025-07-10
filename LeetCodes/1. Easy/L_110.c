@@ -11,7 +11,7 @@ struct TreeNode {
 };
 
 // Função para criar um novo nó
-struct TreeNode* newNode(int val) {
+struct TreeNode *newNode(int val) {
     struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
     node->val = val;
     node->left = NULL;
