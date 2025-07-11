@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-int FuncaoSomatorio( int n );
+int FuncaoSomatorio_r( int n );
 
 int main() {
 
@@ -18,7 +18,7 @@ int main() {
         return 0;
     }
 
-int FuncaoSomatorio( int n ) {
+int FuncaoSomatorio_r( int n ) {
  
     if( n == 0 ) {
         return n;

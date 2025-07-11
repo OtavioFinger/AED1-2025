@@ -2,9 +2,9 @@
 // Exemplo 0! = 1 1! = 1 2! = 2 x 1! 3! = 3 x 2!
 
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-int calcFatorial(int n);
+int calcFatorial_r(int n);
 
 int main() {
 
@@ -17,7 +17,7 @@ int main() {
 
     return 0;
 }
-int calcFatorial(int n) {
+int calcFatorial_r(int n) {
 
     //Caso base
     if ( n == 0 || n == 1){
