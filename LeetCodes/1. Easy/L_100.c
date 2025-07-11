@@ -16,7 +16,7 @@ struct TreeNode *newNode( int val ){
     node->val = val;
     node->right = NULL;
     node->left = NULL;
-}
+};
 
 int main () {
 
@@ -51,7 +51,6 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
 }
 
 /*
-/**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
