@@ -24,6 +24,6 @@ int calCubeSum_r( int n ) {
         return 0;
     }
     // n³ + soma dos cubos anteriores
-    return n * n * n + calCubeSum_r(n - 1);
+    return pow(n,3) + calCubeSum_r(n - 1);
 }
 
