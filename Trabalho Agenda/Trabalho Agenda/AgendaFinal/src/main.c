@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 #define TAM_NOME sizeof(char) * 255
-#define TAM_IDADE sizeof(char) * 4
+#define TAM_IDADE sizeof(char) * 1
 #define TAM_EMAIL sizeof(char) * 255
 #define TAM_PESSOA (TAM_NOME + TAM_IDADE + TAM_EMAIL)
 #define MENU sizeof(int)
@@ -198,6 +198,7 @@ void RemoverContato(void **pBuffer, char **nome, char **idade, char **email, int
             exit(1);
         }
 
+            //Reajusta os ponteiros
         if ( backupBuffer != *pBuffer ) {
             *opcaoMenu = (int *)(*pBuffer);
             *nome = (char *)(*pBuffer + MENU);
