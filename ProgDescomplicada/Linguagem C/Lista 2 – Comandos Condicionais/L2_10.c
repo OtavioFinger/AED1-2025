@@ -13,6 +13,9 @@ int main() {
     printf("Digite o sexo (H para Homem e M para Mulher): ");
     scanf("%c", &sexo);
 
+    printf("Qua sua altura? ");
+    scanf("%f", &altura);
+
     if ( sexo == 'H' || sexo == 'h' ) {
         peso = ( 72.2 * altura ) - 58;
         printf("Peso ideal: %.2f\n", peso );

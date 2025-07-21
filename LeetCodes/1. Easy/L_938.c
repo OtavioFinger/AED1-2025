@@ -14,7 +14,10 @@ struct TreeNode *NewNode( int val ) {
     newNode->val = val;
     newNode->left = NULL;
     newNode->right = NULL;
-}
+};
+
+int rangeSumBST(struct TreeNode* root, int low, int high);
+
 int main() {
 
     struct TreeNode *root = NewNode(10);
@@ -32,5 +35,23 @@ int main() {
 }
 
 int rangeSumBST(struct TreeNode* root, int low, int high) {
-  
+    
+    //Caso de raíz nula
+    if ( root == NULL ) {
+        return 0;
+    }
+
+    // Se a raíz tem valor menor que LOW, olhar a direita
+    if ( root->val < low ) {
+        return rangeSumBST(root->right, low, high );
+    } // Se a raíz tem valor maior que HIGH, olhar a esque
+    else if ( root->val > high ) {
+        return rangeSumBST(root->left, low, high );
+    }
+    else { // O nó está dentro do intervalo, vá pra baixo
+        return root->val +
+            rangeSumBST(root->left, low, high) +
+            rangeSumBST(root->right, low, high);
+    }
+
 }
