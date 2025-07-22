@@ -14,6 +14,7 @@ struct TreeNode *NewNode( int val ) {
     newNode->val = val;
     newNode->left = NULL;
     newNode->right = NULL;
+    return newNode;
 };
 
 int rangeSumBST(struct TreeNode* root, int low, int high);
