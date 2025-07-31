@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 1000
+#define MAX 10000
 #define MAXPOPULATION 100000 //população Reino dos Emparelhamentos 
+
 int main() {
 
     int candidatos;
@@ -41,7 +42,7 @@ int main() {
         //Vê o que tem mais votos
     for ( int i = 1; i < candidatos; i++ ) {
 
-        if ( qtdVotos[i] > maior) {
+        if ( qtdVotos[i] > maior ) {
             maior = qtdVotos[i];
         }
 
