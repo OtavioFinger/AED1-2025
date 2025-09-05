@@ -6,7 +6,14 @@
 
 int main() {
 
+    float areaMetrosQuadrados;
+
+    printf("Digite uma área em m²: ");
+        scanf("%f", &areaMetrosQuadrados);
     
+    float acres = areaMetrosQuadrados * 0.000247;
+
+    printf("Área convertida em acres: %.2f ", acres);
 
     return 0;
 }
